@@ -15,13 +15,13 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <header>
-          <h1>Rancid Tomatillos</h1>
+        <header className="header">
+          <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
           <Theatre movies={this.state.movies}/>
         </main>
-        <nav>
+        <nav className="bottom-nav">
           <h2>Controlled Form</h2>
         </nav>
       </div>

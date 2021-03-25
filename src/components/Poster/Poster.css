@@ -1,3 +1,15 @@
 .poster {
-  border: 5px solid black;
+
+}
+
+.movie-poster {
+  width: 240px;
+}
+
+.movie-info > * {
+  margin: 0px;
+}
+
+.movie-info {
+  margin-bottom: 15px;
 }

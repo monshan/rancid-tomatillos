@@ -1,9 +1,10 @@
-import Poster from '../Poster/Poster'
+import Poster from '../Poster/Poster';
+import './Theatre.css';
 
 const Theatre = ({ movies }) => {
   const allMovies = movies.map(mov => {
     return (
-      <Poster 
+      <Poster
         id={ mov.id }
         poster_path={ mov.poster_path }
         backdrop_path={ mov.backdrop_path }
@@ -15,7 +16,7 @@ const Theatre = ({ movies }) => {
   })
 
   return (
-    <div class="theatre">
+    <div className="theatre">
       {allMovies}
     </div>
   )
