@@ -6,6 +6,7 @@ const Theatre = ({ movies }) => {
     return (
       <Poster
         id={ mov.id }
+        key={ mov.id }
         poster_path={ mov.poster_path }
         backdrop_path={ mov.backdrop_path }
         title={ mov.title }
