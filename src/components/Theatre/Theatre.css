@@ -1,0 +1,8 @@
+.theatre {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 1rem;
+  grid-template-rows: repeat(auto-fit);
+  margin: 0px 1rem 80px 1rem;
+  padding-top: 1rem;
+}
