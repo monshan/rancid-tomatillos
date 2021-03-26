@@ -1,13 +1,15 @@
 import './App.css';
-import movieData from './movieData'
-import Theatre from './components/Theatre/Theatre'
+import movieData from './movieData';
+import Theatre from './components/Theatre/Theatre';
+import SinglePoster from './components/SinglePoster/SinglePoster';
 import { Component } from 'react';
 
 class App extends Component {
   constructor () {
     super();
     this.state = {
-      movies: movieData.movies
+      movies: movieData.movies,
+      movieId: 1
     }
   }
 
@@ -18,7 +20,8 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          <Theatre movies={this.state.movies}/>
+          
+          <SinglePoster />
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
@@ -29,3 +32,4 @@ class App extends Component {
 }
 
 export default App;
+//<Theatre movies={this.state.movies}/>
