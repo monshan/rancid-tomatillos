@@ -16,19 +16,29 @@ class App extends Component {
 
   posterClick = (id) => {
     this.setState({ movieId: id })
-    console.log(id)
   }
 
   deselect = () => {
     this.setState({ movieId: 0 })
   }
 
-  determineRetBtn = () => {
+  // determineRetBtn = () => {
 
+  // }
+
+  componentDidMount = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+      .then(response => response.json())
+      .then(result => {
+        this.setState({ movies: result.movies })
+      })
+      .catch(error => console.log(error))
   }
 
+
+
   render () {
-    let { selected } = this.state.movieId;
+    // let { selected } = this.state.movieId;
 
     return (
       <div className="App">
@@ -37,7 +47,7 @@ class App extends Component {
         </header>
         <main>
           { this.state.movieId &&
-            <SinglePoster posterClick={this.posterClick}/>
+            <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
           }
           { !this.state.movieId &&
             <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
