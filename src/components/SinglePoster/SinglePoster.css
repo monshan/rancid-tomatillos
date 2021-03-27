@@ -1,0 +1,17 @@
+.singlePoster {
+  display: flex;
+}
+
+.singlePoster > img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  max-width: 480px;
+  justify-self: center;
+}
+
+.singlePoster > article {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: center;
+
+}

@@ -25,15 +25,19 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          { this.state.movieId &&
+        <SinglePoster posterClick={this.posterClick}/>
+          {/* { this.state.movieId &&
             <SinglePoster posterClick={this.posterClick}/>
           }
           { !this.state.movieId &&
             <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-          }
+          } */}
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
+          {/* { this.state.movieId &&
+            <ReturnButton />
+          } */}
         </nav>
       </div>
     )

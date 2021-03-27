@@ -27,25 +27,23 @@ class SinglePoster extends Component {
 
   render () {
     return (
-      <div className="singleMovie">
+      <div className="singlePoster">
         <img src={this.state.poster_path} alt="Movie Poster" />
-        <div className="singleMovie_Info">
+        <article className="singleMovie_Info">
           <h2>{ this.state.title }</h2>
           <h3>{ this.state.tagline }</h3>
           <p>Released: { this.state.release_date }</p>
-          <p>{ this.state.runtime } min.</p>
-          <p>{ this.state.average_rating }/10</p>
+          <p>Runtime: { this.state.runtime } min.</p>
+          <p>Rating: { this.state.average_rating }/10</p>
           <p>Genres: { this.mapInfo(this.state.genres) }</p>
           <p>{ this.state.overview }</p>
           <p>Budget: ${ this.state.budget }</p>
           <p>Revenue: ${ this.state.revenue }</p>
-        </div>
+        </article>
       </div>
     )
   }
 
 }
-
-
 
 export default SinglePoster;
