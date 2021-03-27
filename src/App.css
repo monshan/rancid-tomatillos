@@ -37,6 +37,6 @@ main {
   bottom: 0px;
   border-top: 5px solid #96875A;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
 }
