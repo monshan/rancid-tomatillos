@@ -22,10 +22,6 @@ class App extends Component {
     this.setState({ movieId: 0 })
   }
 
-  // determineRetBtn = () => {
-
-  // }
-
   componentDidMount = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then(response => response.json())
@@ -35,18 +31,14 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
-
-
   render () {
-    // let { selected } = this.state.movieId;
-
     return (
       <div className="App">
         <header className="header">
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          { this.state.movieId &&
+          { !!this.state.movieId  &&
             <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
           }
           { !this.state.movieId &&
@@ -55,10 +47,9 @@ class App extends Component {
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
-          {/* { selected &&
+          { !!this.state.movieId &&
             <ReturnButton deselect={ this.deselect }/>
-          } */}
-          <ReturnButton />
+          }
         </nav>
       </div>
     )

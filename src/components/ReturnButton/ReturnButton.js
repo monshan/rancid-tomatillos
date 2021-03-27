@@ -1,21 +1,8 @@
-// import { Component } from 'react'
 import './ReturnButton.css'
-
-// class ReturnButton extends Component {
-//   constructor(props) {
-//     super();
-//   }
-
-//   render () {
-//     return (
-//       <button className="returnButton" >Go back!</button>
-//     )
-//   }
-// }
 
 const ReturnButton = (props) => {
   return (
-    <button className="returnButton">Go back!</button>
+    <button className="returnButton" onClick={ props.deselect }>Go back!</button>
   )
 }
 
