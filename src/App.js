@@ -9,8 +9,13 @@ class App extends Component {
     super();
     this.state = {
       movies: movieData.movies,
-      movieId: 1
+      movieId: 0
     }
+  }
+
+  posterClick = (id) => {
+    this.setState({ movieId: id })
+    console.log(id)
   }
 
   render () {
@@ -20,8 +25,12 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          
-          <SinglePoster />
+          { this.state.movieId &&
+            <SinglePoster posterClick={this.posterClick}/>
+          }
+          { !this.state.movieId &&
+            <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+          }
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
