@@ -2,8 +2,9 @@ import './App.css';
 import movieData from './movieData';
 import Theatre from './components/Theatre/Theatre';
 import SinglePoster from './components/SinglePoster/SinglePoster';
-import ReturnButton from './components/ReturnButton/ReturnButton'
+import ReturnButton from './components/ReturnButton/ReturnButton';
 import { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor () {
@@ -38,12 +39,15 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          { !!this.state.movieId  &&
-            <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
-          }
-          { !this.state.movieId &&
-            <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-          }
+          <Route
+            exact
+            path="/:id"
+            render={ () => {
+            return <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
+          }} />
+          <Route path="/">
+              <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+          </Route>
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
@@ -58,3 +62,9 @@ class App extends Component {
 
 export default App;
 //<Theatre movies={this.state.movies}/>
+// { !!this.state.movieId  &&
+//   <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
+// }
+// { !this.state.movieId &&
+//   <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+// }
