@@ -40,25 +40,23 @@ class App extends Component {
         </header>
         <main>
         <Switch>
-            <Route
-              exact
-              path={`/thots/${this.state.movieId}`}
-              // path='/thots/:id'
-              render={ ({match}) => {
-                // const unique = match.params.id
-                // const singleMovie=
-              return <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
-            }} />
-            <Route path="/">
-                <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-            </Route>
-          </Switch>
+          <Route
+            path='/:id'
+            render={ ({match}) => {
+            return <SinglePoster movieId={ match.params.id }/>
+          }} />
+          <Route exact path="/">
+              <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+          </Route>
+        </Switch>
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
-          { !!this.state.movieId &&
-            <Link to="/">Go Back!</Link>
-          }
+          <Route path="/:id">
+            <Link to="/">
+              <ReturnButton />
+            </Link>
+          </Route>
         </nav>
       </div>
     )
@@ -66,10 +64,3 @@ class App extends Component {
 }
 
 export default App;
-//<Theatre movies={this.state.movies}/>
-// { !!this.state.movieId  &&
-//   <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
-// }
-// { !this.state.movieId &&
-//   <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-// }
