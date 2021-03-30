@@ -2,8 +2,9 @@ import './App.css';
 import movieData from './movieData';
 import Theatre from './components/Theatre/Theatre';
 import SinglePoster from './components/SinglePoster/SinglePoster';
-import ReturnButton from './components/ReturnButton/ReturnButton'
+import { getMovie } from './calls.js';
 import { Component } from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor () {
@@ -23,8 +24,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-      .then(response => response.json())
+    getMovie('')
       .then(result => {
         this.setState({ movies: result.movies })
       })
@@ -38,18 +38,24 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          { !!this.state.movieId  &&
-            <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
-          }
-          { !this.state.movieId &&
-            <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-          }
+        <Switch>
+          <Route
+            path='/:id'
+            render={ ({match}) => {
+            return <SinglePoster movieId={ match.params.id }/>
+          }} />
+          <Route exact path="/">
+              <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+          </Route>
+        </Switch>
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
-          { !!this.state.movieId &&
-            <ReturnButton deselect={ this.deselect }/>
-          }
+          <Route path="/:id">
+            <Link to="/">
+              <button className="returnButton" onClick={ this.deselect }>Go back!</button>
+            </Link>
+          </Route>
         </nav>
       </div>
     )
@@ -57,4 +63,3 @@ class App extends Component {
 }
 
 export default App;
-//<Theatre movies={this.state.movies}/>

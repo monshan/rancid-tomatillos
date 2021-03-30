@@ -7,6 +7,11 @@ main {
   grid-row: 2 / 3;
 }
 
+a {
+  text-decoration: none;
+  color: #CEBA88;
+}
+
 .App {
   text-align: center;
   color: #CEBA88;
@@ -39,4 +44,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.returnButton {
+  background: transparent;
+  color: #CEBA88;
+  border: 2px solid #CEBA88;
+  border-radius: 5px;
+  font-size: medium;
+  padding: 5px 10px;
 }
