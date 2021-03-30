@@ -3,7 +3,7 @@ import movieData from './movieData';
 import Theatre from './components/Theatre/Theatre';
 import SinglePoster from './components/SinglePoster/SinglePoster';
 import ReturnButton from './components/ReturnButton/ReturnButton';
-import { getMovies } from './calls.js';
+import { getMovie } from './calls.js';
 import { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    getMovies()
+    getMovie('')
       .then(result => {
         this.setState({ movies: result.movies })
       })
