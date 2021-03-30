@@ -1,14 +1,3 @@
-// import { Component } from "react";
-
-// class Poster extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       ""
-//     }
-//   }
-// }
-
 import './Poster.css';
 import { Link } from "react-router-dom";
 

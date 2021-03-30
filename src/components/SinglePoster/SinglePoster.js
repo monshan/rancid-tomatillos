@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { getMovie } from '../../calls.js';
 import './SinglePoster.css';
 
 class SinglePoster extends Component {
@@ -15,8 +16,7 @@ class SinglePoster extends Component {
   }
 
   componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies/' + this.props.movieId)
-      .then(response => response.json())
+    getMovie(this.props.movieId)
       .then(result => this.setState({ movie: result.movie }))
       .catch(error => console.log(error))
   }
