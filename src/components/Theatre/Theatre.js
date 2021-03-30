@@ -17,7 +17,7 @@ const Theatre = ({ movies, posterClick }) => {
   })
 
   return (
-    <div className="theatre" onClick={ event=>{posterClick(event.target.closest('section').id)} }
+    <div className="theatre" onClick={ event=>{posterClick(event.target.closest('a').id)} }
       >
       {allMovies}
     </div>

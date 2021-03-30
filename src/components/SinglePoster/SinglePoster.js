@@ -28,6 +28,7 @@ class SinglePoster extends Component {
 
     return (
       <div className="singlePoster">
+      {console.log(this.state.movie.id)}
         <img src={this.state.movie.poster_path} alt="Movie Poster" />
         <article className="singleMovie_Info">
           <h2>{ this.state.movie.title }</h2>

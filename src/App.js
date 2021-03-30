@@ -4,7 +4,7 @@ import Theatre from './components/Theatre/Theatre';
 import SinglePoster from './components/SinglePoster/SinglePoster';
 import ReturnButton from './components/ReturnButton/ReturnButton';
 import { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor () {
@@ -39,20 +39,25 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
-          <Route
-            exact
-            path="/:id"
-            render={ () => {
-            return <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
-          }} />
-          <Route path="/">
-              <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-          </Route>
+        <Switch>
+            <Route
+              exact
+              path={`/thots/${this.state.movieId}`}
+              // path='/thots/:id'
+              render={ ({match}) => {
+                // const unique = match.params.id
+                // const singleMovie=
+              return <SinglePoster posterClick={this.posterClick} movieId={ this.state.movieId }/>
+            }} />
+            <Route path="/">
+                <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+            </Route>
+          </Switch>
         </main>
         <nav className="bottom-nav">
           <h2>Controlled Form</h2>
           { !!this.state.movieId &&
-            <ReturnButton deselect={ this.deselect }/>
+            <Link to="/">Go Back!</Link>
           }
         </nav>
       </div>
