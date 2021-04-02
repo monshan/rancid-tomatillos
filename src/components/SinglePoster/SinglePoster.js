@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { getMovie } from '../../calls.js';
+import { FilmReel } from '../../assets/film-reel.svg'
 import './SinglePoster.css';
 
 class SinglePoster extends Component {
@@ -23,7 +24,9 @@ class SinglePoster extends Component {
 
   render () {
     if (!this.state.movie) {
-      return (<h2>you thot</h2>)
+      return (
+        <h2>you thot</h2>
+      )
     }
 
     return (

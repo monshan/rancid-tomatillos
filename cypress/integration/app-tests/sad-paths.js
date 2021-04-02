@@ -3,8 +3,8 @@ describe('Sad path testing', () => {
     cy.visit('http://localhost:3000');
   });
 
-  // What will show up if the path is invalid (non-existing id)
-  it('')
-
-  // Check error message
+  it('Displays an error message if invalid or unexistant id path is visited', () => {
+    cy.visit('http://localhost:3000/867530');
+    cy.get('p').contains('Git out');
+  })
 })
