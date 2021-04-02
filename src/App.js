@@ -11,7 +11,8 @@ class App extends Component {
     super();
     this.state = {
       movies: movieData.movies,
-      movieId: 0
+      movieId: 0,
+      error: null
     }
   }
 
@@ -28,7 +29,7 @@ class App extends Component {
       .then(result => {
         this.setState({ movies: result.movies })
       })
-      .catch(error => console.log(error))
+      .catch(error => this.setState({ error: error }))
   }
 
   render () {
@@ -38,11 +39,21 @@ class App extends Component {
           <h1 className="title">Rancid Tomatillos</h1>
         </header>
         <main>
+        {this.state.error && <p>{this.state.error}</p>}
         <Switch>
           <Route
             path='/:id'
             render={ ({match}) => {
-            return <SinglePoster movieId={ match.params.id }/>
+            const ids = this.state.movies.map(mov => {
+              return mov.id
+            })
+            if (ids.includes(parseInt(match.params.id))) {
+              return <SinglePoster movieId={ match.params.id }/>
+            } else {
+              return (
+                <p>Git out</p>
+              )
+            }
           }} />
           <Route exact path="/">
               <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
