@@ -25,7 +25,7 @@ class SinglePoster extends Component {
   render () {
     if (!this.state.movie) {
       return (
-        <h2>you thot</h2>
+        <h2>Loading ...</h2>
       )
     }
 

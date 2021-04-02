@@ -51,7 +51,10 @@ class App extends Component {
               return <SinglePoster movieId={ match.params.id }/>
             } else {
               return (
-                <p>Git out</p>
+                <article>
+                  <h2>You're in the wrong place Bronco</h2>
+                  <p>This page doesn't exist, please navigate back to home with the 'Go Back' button below</p>
+                </article>
               )
             }
           }} />

@@ -22,6 +22,4 @@ describe('Go HAAM', () => {
     cy.get('.returnButton').click()
     cy.url().should('eq', 'http://localhost:3000/')
   });
-
-  
 });

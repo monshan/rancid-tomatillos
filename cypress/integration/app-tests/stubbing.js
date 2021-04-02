@@ -44,4 +44,16 @@ describe('Stubbing Tests', () => {
     // })
     .url().should('include', '/')
   })
+
+  it('Should be able to recieve an error and display on UI if invalid url is visited', () => {
+    cy.intercept({
+      method: 'GET',
+      url: 'http://localhost:3000/694919'
+    }, {
+      statusCode: 404,
+      body: {
+        "error": "No movie found with id:694919"
+      }
+    })
+  })
 })
