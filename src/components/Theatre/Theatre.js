@@ -12,13 +12,13 @@ const Theatre = ({ movies, posterClick }) => {
         title={ mov.title }
         average_rating={ mov.average_rating }
         release_date={ mov.release_date }
+        onClick={ event=>{posterClick(event.target.closest('a').id)} }
     />
     )
   })
 
   return (
-    <div className="theatre" onClick={ event=>{posterClick(event.target.closest('a').id)} }
-      >
+    <div className="theatre">
       {allMovies}
     </div>
   )

@@ -58,7 +58,7 @@ class App extends Component {
         </Switch>
         </main>
         <nav className="bottom-nav">
-          <h2>Controlled Form</h2>
+          <h2>~Search bar here~</h2>
           <Route path="/:id">
             <Link to="/">
               <button className="returnButton" onClick={ this.deselect }>Go back!</button>
