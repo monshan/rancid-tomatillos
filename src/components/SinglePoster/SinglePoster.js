@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import { getMovie } from '../../calls.js';
-import { FilmReel } from '../../assets/film-reel.svg'
+// import { FilmReel } from '../../assets/film-reel.svg'
 import './SinglePoster.css';
 
 class SinglePoster extends Component {
   constructor () {
     super();
     this.state = {
-      movie: null
+      movie: null,
+      error: null
       }
   };
 
@@ -19,7 +20,7 @@ class SinglePoster extends Component {
   componentDidMount = () => {
     getMovie(this.props.movieId)
       .then(result => this.setState({ movie: result.movie }))
-      .catch(error => console.log(error))
+      .catch(error => this.setState({ error: error}))
   }
 
   render () {
@@ -27,14 +28,23 @@ class SinglePoster extends Component {
       return (
         <h2>Loading ...</h2>
       )
+    } else if (this.state.error) {
+      return (
+        <section>
+          <h2>Jhonson, we have a problem</h2>
+          <p>Cannot load asset of {this.state.error}</p>
+        </section>
+      )
     }
+
+    const {title, tagline} = this.state.movie
 
     return (
       <div className="singlePoster">
-        <img src={this.state.movie.poster_path} alt="Movie Poster" />
+        <img src={this.state.movie.poster_path} alt={`${title} poster`}/>
         <article className="singleMovie_Info">
-          <h2>{ this.state.movie.title }</h2>
-          <h3>{ this.state.movie.tagline }</h3>
+          <h2>{ title }</h2>
+          <h3>{ tagline }</h3>
           <p>Released: { this.state.movie.release_date }</p>
           <p>Runtime: { this.state.movie.runtime } min.</p>
           <p>Rating: { this.state.movie.average_rating }/10</p>

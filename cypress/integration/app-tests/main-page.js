@@ -1,6 +1,6 @@
 describe('Go HAAM', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3000/');
   });
   it('Should render movie poster data', () => {
     cy.get( '.theatre' )
@@ -18,8 +18,12 @@ describe('Go HAAM', () => {
     cy.url().should('eq', 'http://localhost:3000/694919')
   });
   it('Should be able to return to main menu from movie info menu', () => {
-    cy.visit('http://localhost:3000/718444')
-    cy.get('.returnButton').click()
+    cy.get('.theatre').get('#694919').click()
+      .get('.returnButton').click()
     cy.url().should('eq', 'http://localhost:3000/')
+
+    // cy.visit('http://localhost:3000/718444')
+    //   .get('.returnButton').click()
+    //   .url().should('eq', 'http://localhost:3000/')
   });
 });

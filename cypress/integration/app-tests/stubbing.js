@@ -1,6 +1,6 @@
 describe('Stubbing Tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3000/');
   });
 
   it('Should be able to click on a unique poster and direct user to related page', () => {
@@ -46,14 +46,17 @@ describe('Stubbing Tests', () => {
   })
 
   it('Should be able to recieve an error and display on UI if invalid url is visited', () => {
-    cy.intercept({
-      method: 'GET',
-      url: 'http://localhost:3000/694919'
-    }, {
-      statusCode: 404,
-      body: {
-        "error": "No movie found with id:694919"
-      }
-    })
+    
+    // cy.visit('http://localhost:3000/694919')
+    //   .get('section > h2').should('eq', 'Jhonson, we have a problem')
+    // cy.intercept({
+    //   method: 'GET',
+    //   url: 'http://localhost:3000/694919'
+    // }, {
+    //   statusCode: 404,
+    //   body: {
+    //     "error": "No movie found with id:694919"
+    //   }
+    // })
   })
 })
