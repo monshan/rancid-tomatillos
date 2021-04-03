@@ -2,6 +2,13 @@
 
 }
 
+.poster:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%;
+}
+
 .movie-poster {
   width: 240px;
 }

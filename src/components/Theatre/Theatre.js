@@ -13,7 +13,7 @@ const Theatre = ({ movies, posterClick }) => {
         average_rating={ mov.average_rating }
         release_date={ mov.release_date }
         onClick={ event=>{posterClick(event.target.closest('a').id)} }
-    />
+      />
     )
   })
 
