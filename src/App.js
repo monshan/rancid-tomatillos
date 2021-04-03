@@ -44,22 +44,16 @@ class App extends Component {
           <Route
             path='/:id'
             render={ ({match}) => {
-            const ids = this.state.movies.map(mov => {
-              return mov.id
-            })
-            if (ids.includes(parseInt(match.params.id))) {
               return <SinglePoster movieId={ match.params.id }/>
-            } else {
-              return (
-                <article>
-                  <h2>You're in the wrong place Bronco</h2>
-                  <p>This page doesn't exist, please navigate back to home with the 'Go Back' button below</p>
-                </article>
-              )
-            }
           }} />
           <Route exact path="/">
-              <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+            <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+          </Route>
+          <Route path="*">
+            <article>
+              <h2>You're in the wrong place Bronco</h2>
+              <p>This page doesn't exist, please navigate back to home with the 'Go Back' button below</p>
+            </article>
           </Route>
         </Switch>
         </main>
