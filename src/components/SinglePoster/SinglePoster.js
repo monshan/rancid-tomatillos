@@ -20,6 +20,10 @@ class SinglePoster extends Component {
     return Math.round(toRound)
   }
 
+  formatMoney = (raw) => {
+    return raw.toLocaleString();
+  }
+
   componentDidMount = () => {
     getMovie(this.props.movieId)
       .then(result => this.setState({ movie: result.movie }))
@@ -40,10 +44,10 @@ class SinglePoster extends Component {
       )
     }
 
-    const {title, tagline, release_date, runtime, budget, revenue, poster_path, average_rating, genres, overview, id} = this.state.movie
+    const {title, tagline, release_date, runtime, budget, revenue, poster_path, average_rating, genres, overview, id, backdrop_path} = this.state.movie
 
     return (
-      <div className="singlePoster">
+      <div className="singlePoster" style={{backgroundImage: `linear-gradient(hsla(0, 0%, 0%, 0.8), #253035), url(${backdrop_path})`}}>
         <img src={poster_path} alt={`${title} poster`}/>
         <article className="singleMovie_Info">
           <h2>{ title }</h2>
@@ -53,8 +57,8 @@ class SinglePoster extends Component {
           <p>Rating: { this.roundRating(average_rating) }/10</p>
           <ul className="Genres">Genres: { this.makeItems(genres, id) }</ul>
           <p>{ overview }</p>
-          {!!budget && <p>Budget: ${ budget }</p>}
-          {!!revenue && <p>Revenue: ${ revenue }</p>}
+          {!!budget && <p>Budget: ${ this.formatMoney(budget) }</p>}
+          {!!revenue && <p>Revenue: ${ this.formatMoney(revenue) }</p>}
         </article>
       </div>
     )
