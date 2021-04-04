@@ -47,7 +47,7 @@ class SinglePoster extends Component {
     const {title, tagline, release_date, runtime, budget, revenue, poster_path, average_rating, genres, overview, id, backdrop_path} = this.state.movie
 
     return (
-      <div className="singlePoster" style={{backgroundImage: `linear-gradient(hsla(0, 0%, 0%, 0.8), #253035), url(${backdrop_path})`}}>
+      <div className="background" style={{backgroundImage: `linear-gradient(hsla(0, 0%, 0%, 0.8), #253035), url(${backdrop_path})`}}>
         <img src={poster_path} alt={`${title} poster`}/>
         <article className="singleMovie_Info">
           <h2>{ title }</h2>

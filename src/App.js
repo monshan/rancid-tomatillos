@@ -58,13 +58,6 @@ class App extends Component {
                 )
               }
           }} />
-          {/* <Route path="*" render={ 
-            () => {
-              if (this.state.error) {
-                
-              }
-            }
-           } /> */}
         </Switch>
         </main>
         <nav className="bottom-nav">
