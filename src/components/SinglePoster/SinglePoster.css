@@ -28,3 +28,30 @@ article {
   flex-direction: column;
   align-items: flex-start;
 }
+
+@media screen and (min-width: 400px) {
+  .background {
+    background-size: 0 0;
+    grid-template-columns: 1fr;
+  }
+
+  article {
+    text-align: center;
+    grid-column: 1/2;
+    grid-row: 2;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .background {
+    background-size: cover;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  article {
+    padding-left: 10px;
+    text-align: center;
+    grid-column: 2;
+    grid-row: 1/2;
+  }
+}

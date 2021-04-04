@@ -1,9 +1,15 @@
 describe('Go HAAM', () => {
   const baseURL = 'http://localhost:3000/'
 
-  // beforeEach(() => {
-  //   cy.visit('http://localhost:3000/');
-  // });
+  beforeEach(() => {
+    cy.fixture('Movie-data.json')
+      .then(movies => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+          body: movies
+        })
+      });
+    //cy.visit('http://localhost:3000/');
+  });
   it('Should display a header', () => {
     cy.visit('http://localhost:3000');
     cy.get('header').should('be.visible')
