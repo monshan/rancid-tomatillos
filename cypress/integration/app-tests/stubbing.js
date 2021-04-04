@@ -1,9 +1,10 @@
 describe('Stubbing Tests', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000');
-  });
+  // beforeEach(() => {
+  //   cy.visit('http://localhost:3000');
+  // });
 
   it('Should be able to click on a unique poster and direct user to related page', () => {
+    cy.visit('http://localhost:3000');
     cy.intercept({
       method: 'GET',
       url: 'http://localhost:3000/694919'
@@ -23,6 +24,7 @@ describe('Stubbing Tests', () => {
   })
 
   it('Should successfully GET all posters from API server', () => {
+    cy.visit('http://localhost:3000');
     cy.intercept({
       method: 'GET',
       url: 'http://localhost:3000'
@@ -46,6 +48,7 @@ describe('Stubbing Tests', () => {
   })
 
   it('Should be able to recieve an error and display on UI if invalid url is visited', () => {
+    cy.visit('http://localhost:3000');
     cy.intercept({
       method: 'GET',
       url: 'http://localhost:3000/694919'
