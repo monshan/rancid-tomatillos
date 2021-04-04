@@ -14,7 +14,7 @@ class SinglePoster extends Component {
 
   mapInfo = (stateInfo) =>{
     let tempInfo = [...stateInfo]
-    return tempInfo.join(', ');
+    return tempInfo.map(genre => <li>{genre}</li>);
   }
 
   componentDidMount = () => {
