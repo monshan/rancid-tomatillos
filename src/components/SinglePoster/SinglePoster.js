@@ -26,12 +26,19 @@ class SinglePoster extends Component {
 
   componentDidMount = () => {
     getMovie(this.props.movieId)
-      .then(result => this.setState({ movie: result.movie }))
-      .catch(error => this.setState({ error: error}))
+      .then(result => {
+        this.setState({ movie: result.movie })
+        if (result.error) {
+          this.setState({error: result.error})
+        }
+      })
+      .catch(error => {
+        this.setState({ error: error.error})
+      })
   }
 
   render () {
-    if (!this.state.movie) {
+    if (!this.state.movie && !this.state.error) {
       return (
         <h2>Loading ...</h2>
       )

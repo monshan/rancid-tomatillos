@@ -4,10 +4,10 @@ describe('Go HAAM', () => {
   // beforeEach(() => {
   //   cy.visit('http://localhost:3000/');
   // });
-  // it('Should display a header', () => {
-  //   cy.visit('http://localhost:3000');
-  //   cy.get('header').should('be.visible')
-  // });
+  it('Should display a header', () => {
+    cy.visit('http://localhost:3000');
+    cy.get('header').should('be.visible')
+  });
   it('Should have alt text on images', () => {
     cy.visit('http://localhost:3000');
     cy.get('.theatre').get('.poster').get('.movie-poster').should('have.attr', 'alt');
