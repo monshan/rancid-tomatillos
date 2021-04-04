@@ -37,21 +37,21 @@ class SinglePoster extends Component {
       )
     }
 
-    const {title, tagline} = this.state.movie
+    const {title, tagline, release_date, runtime, budget, revenue, poster_path, average_rating, genres, overview} = this.state.movie
 
     return (
       <div className="singlePoster">
-        <img src={this.state.movie.poster_path} alt={`${title} poster`}/>
+        <img src={poster_path} alt={`${title} poster`}/>
         <article className="singleMovie_Info">
           <h2>{ title }</h2>
-          <h3>{ tagline }</h3>
-          <p>Released: { this.state.movie.release_date }</p>
-          <p>Runtime: { this.state.movie.runtime } min.</p>
-          <p>Rating: { this.state.movie.average_rating }/10</p>
-          <p>Genres: { this.mapInfo(this.state.movie.genres) }</p>
-          <p>{ this.state.movie.overview }</p>
-          <p>Budget: ${ this.state.movie.budget }</p>
-          <p>Revenue: ${ this.state.movie.revenue }</p>
+          <blockquote>{ tagline }</blockquote>
+          <p>Released: { release_date }</p>
+          <p>Runtime: { runtime } min.</p>
+          <p>Rating: { average_rating }/10</p>
+          <ul>Genres: { this.mapInfo(genres) }</ul>
+          <p>{ overview }</p>
+          <p>Budget: ${ budget }</p>
+          <p>Revenue: ${ revenue }</p>
         </article>
       </div>
     )

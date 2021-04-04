@@ -47,7 +47,7 @@ class App extends Component {
             path='/:id'
             render={ ({match}) => {
               const valids = this.state.movies.map(mov => mov.id)
-              if (valids.includes(match.params.id)) {
+              if (valids.includes(parseInt(match.params.id))) {
                 return <SinglePoster movieId={ match.params.id }/>
               } else {
                 return (

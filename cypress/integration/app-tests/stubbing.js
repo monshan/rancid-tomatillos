@@ -1,9 +1,10 @@
 describe('Stubbing Tests', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000/');
-  });
+  // beforeEach(() => {
+  //   cy.visit('http://localhost:3000/');
+  // });
 
   it('Should be able to click on a unique poster and direct user to related page', () => {
+    cy.visit('http://localhost:3000/');
     cy.intercept({
       method: 'GET',
       url: 'http://localhost:3000/694919'
@@ -23,6 +24,7 @@ describe('Stubbing Tests', () => {
   })
 
   it('Should successfully GET all posters from API server', () => {
+    cy.visit('http://localhost:3000/');
     cy.intercept({
       method: 'GET',
       url: 'http://localhost:3000'
@@ -32,31 +34,19 @@ describe('Stubbing Tests', () => {
        'movies': [{}, {}]
       }
     })
-    // .should('', () => {
-    //   expect().to.include({
-    //     "id": 694919,
-    //     "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
-    //     "backdrop_path": "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
-    //     "title": "Money Plane",
-    //     "average_rating": 6.666666666666667,
-    //     "release_date": "2020-09-29"
-    //   })
-    // })
     .url().should('include', '/')
   })
 
   it('Should be able to recieve an error and display on UI if invalid url is visited', () => {
-    
-    // cy.visit('http://localhost:3000/694919')
-    //   .get('section > h2').should('eq', 'Jhonson, we have a problem')
+    cy.visit('http://localhost:3000/875629')
     // cy.intercept({
-    //   method: 'GET',
-    //   url: 'http://localhost:3000/694919'
+    //   url: 'http://localhost:3000/875629'
     // }, {
     //   statusCode: 404,
     //   body: {
-    //     "error": "No movie found with id:694919"
+    //     "error": "No movie found with id:875629"
     //   }
     // })
+    cy.get('section > h2').should('eq', 'Jhonson, we have a problem')
   })
 })
