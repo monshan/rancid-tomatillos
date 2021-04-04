@@ -1,5 +1,4 @@
 import './App.css';
-import movieData from './movieData';
 import Theatre from './components/Theatre/Theatre';
 import SinglePoster from './components/SinglePoster/SinglePoster';
 import { getMovie } from './calls.js';
@@ -10,7 +9,7 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
-      movies: movieData.movies,
+      movies: [],
       movieId: 0,
       error: null
     }
@@ -41,30 +40,28 @@ class App extends Component {
         <main>
         {this.state.error && <p>{this.state.error}</p>}
         <Switch>
+          <Route exact path="/">
+            <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
+          </Route>
           <Route
             path='/:id'
             render={ ({match}) => {
-            const ids = this.state.movies.map(mov => {
-              return mov.id
-            })
-            if (ids.includes(parseInt(match.params.id))) {
-              return <SinglePoster movieId={ match.params.id }/>
-            } else {
-              return (
-                <article>
-                  <h2>You're in the wrong place Bronco</h2>
-                  <p>This page doesn't exist, please navigate back to home with the 'Go Back' button below</p>
-                </article>
-              )
-            }
+              const valids = this.state.movies.map(mov => mov.id)
+              if (valids.includes(parseInt(match.params.id))) {
+                return <SinglePoster movieId={ match.params.id }/>
+              } else {
+                return (
+                  <article>
+              <h2>You're in the wrong place Bronco</h2>
+              <p>This page doesn't exist, please navigate back to home with the 'Go Back' button below</p>
+            </article>
+                )
+              }
           }} />
-          <Route exact path="/">
-              <Theatre movies={this.state.movies} posterClick={this.posterClick}/>
-          </Route>
         </Switch>
         </main>
         <nav className="bottom-nav">
-          <h2>Controlled Form</h2>
+          <h2>~Search bar here~</h2>
           <Route path="/:id">
             <Link to="/">
               <button className="returnButton" onClick={ this.deselect }>Go back!</button>
