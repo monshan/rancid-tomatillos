@@ -46,7 +46,7 @@ class SinglePoster extends Component {
       return (
         <section>
           <h2>Jhonson, we have a problem</h2>
-          <p>Cannot load asset of {this.state.error}</p>
+          <p>{this.state.error}</p>
         </section>
       )
     }

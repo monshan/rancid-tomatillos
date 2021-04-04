@@ -16,20 +16,12 @@ describe('Go HAAM', () => {
   });
   it('Should have alt text on images', () => {
     cy.visit('http://localhost:3000');
-    cy.get('.theatre').get('.poster').get('.movie-poster').should('have.attr', 'alt');
-  });
-  it('Should render movie poster data', () => {
-    cy.visit('http://localhost:3000');
-    cy.get( '.theatre' )
-      .first( '.poster' )
-      .first( '.movie-info' )
-      .first( 'h2' ).contains('Money Plane')
-      .first( 'p' ).contains('2020-09-29')
+    cy.get('.theatre').get('.poster').should('have.attr', 'alt');
   });
   it('Should render all movie posters', () => {
    cy.visit('http://localhost:3000');
     cy.get( '.theatre' )
-      .get( '.poster' ).should('have.length', 40)
+      .get( '.poster' ).should('have.length', 9)
   });
   it('Should be able to select a poster and view more information', () => {
    cy.visit('http://localhost:3000');
