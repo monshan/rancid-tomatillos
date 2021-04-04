@@ -12,9 +12,12 @@ class SinglePoster extends Component {
       }
   };
 
-  mapInfo = (stateInfo) =>{
-    let tempInfo = [...stateInfo]
-    return tempInfo.map(genre => <li>{genre}</li>);
+  makeItems = (listItems, id) =>{
+    return listItems.map(genre => <li key={`${id}${genre}`} className="genre">{genre}</li>);
+  }
+
+  roundRating = (toRound) => {
+    return Math.round(toRound)
   }
 
   componentDidMount = () => {
@@ -37,21 +40,21 @@ class SinglePoster extends Component {
       )
     }
 
-    const {title, tagline, release_date, runtime, budget, revenue, poster_path, average_rating, genres, overview} = this.state.movie
+    const {title, tagline, release_date, runtime, budget, revenue, poster_path, average_rating, genres, overview, id} = this.state.movie
 
     return (
       <div className="singlePoster">
         <img src={poster_path} alt={`${title} poster`}/>
         <article className="singleMovie_Info">
           <h2>{ title }</h2>
-          <blockquote>{ tagline }</blockquote>
+          {tagline && <blockquote>{ tagline }</blockquote>}
           <p>Released: { release_date }</p>
           <p>Runtime: { runtime } min.</p>
-          <p>Rating: { average_rating }/10</p>
-          <ul>Genres: { this.mapInfo(genres) }</ul>
+          <p>Rating: { this.roundRating(average_rating) }/10</p>
+          <ul className="Genres">Genres: { this.makeItems(genres, id) }</ul>
           <p>{ overview }</p>
-          <p>Budget: ${ budget }</p>
-          <p>Revenue: ${ revenue }</p>
+          {!!budget && <p>Budget: ${ budget }</p>}
+          {!!revenue && <p>Revenue: ${ revenue }</p>}
         </article>
       </div>
     )
