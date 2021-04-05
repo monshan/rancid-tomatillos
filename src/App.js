@@ -25,10 +25,16 @@ class App extends Component {
 
   componentDidMount = () => {
     getMovie('')
-      .then(result => {
-        this.setState({ movies: result.movies })
-      })
-      .catch(error => this.setState({ error: error }))
+      .then(result =>{
+          this.setState({ movies: result.movies })
+          if (result.error) {
+            this.setState({error: result.error})
+          }
+        })
+      .catch(error =>{
+        console.log(error)
+         this.setState({ error: error })
+       })
   }
 
   render () {

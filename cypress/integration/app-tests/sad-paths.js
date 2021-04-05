@@ -5,7 +5,7 @@ describe('Sad path testing', () => {
     cy.get('h2').contains("You're in the wrong place Bronco");
   })
 
-  it('Should be able to recieve an error and display on UI if invalid url is visited', () => {
+  it('Should be able to recieve a 404 error and display on UI if invalid url is visited', () => {
     cy.visit('http://localhost:3000/694919')
     cy.intercept({
       url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
@@ -16,6 +16,19 @@ describe('Sad path testing', () => {
       }
     })
     cy.get('section > h2').contains('Jhonson, we have a problem')
+  })
+
+  it('Should be able to receive a 500 error code and return a message on UI', () => {
+    cy.visit('http://localhost:3000/')
+    cy.intercept({
+      url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+    }, {
+      statusCode: 500,
+      body: {
+        "error": "Server Not Found"
+      }
+    })
+    cy.get('h2').contains("You're in the wrong place Bronco");
   })
 
 //ADD 500 CODE TEST
