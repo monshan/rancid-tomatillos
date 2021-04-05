@@ -1,7 +1,7 @@
 import Poster from '../Poster/Poster';
 import './Theatre.css';
 
-const Theatre = ({ movies, posterClick }) => {
+const Theatre = ({ movies, posterClick, error }) => {
   const allMovies = movies.map(mov => {
     return (
       <Poster
@@ -12,14 +12,14 @@ const Theatre = ({ movies, posterClick }) => {
         title={ mov.title }
         average_rating={ mov.average_rating }
         release_date={ mov.release_date }
-        onClick={ event=>{posterClick(event.target.closest('a').id)} }
+        onClick={ event=>{ posterClick(event.target.closest('a').id) } }
       />
     )
   })
 
   return (
     <div className="theatre">
-      {allMovies}
+     {allMovies}
     </div>
   )
 }

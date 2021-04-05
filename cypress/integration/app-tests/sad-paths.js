@@ -1,5 +1,9 @@
 describe('Sad path testing', () => {
 
+  // beforeEach(() => {
+
+  // })
+
   it('Displays an error message if invalid or unexistant id path is visited', () => {
     cy.visit('http://localhost:3000/867530');
     cy.get('h2').contains("You're in the wrong place Bronco");
@@ -21,6 +25,7 @@ describe('Sad path testing', () => {
   it('Should be able to receive a 500 error code and return a message on UI', () => {
     cy.visit('http://localhost:3000/')
     cy.intercept({
+      method: 'GET',
       url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
     }, {
       statusCode: 500,
@@ -28,9 +33,6 @@ describe('Sad path testing', () => {
         "error": "Server Not Found"
       }
     })
-    cy.get('h2').contains("You're in the wrong place Bronco");
+    cy.get('article > h2').contains("Very Gud");
   })
-
-//ADD 500 CODE TEST
-
 })
