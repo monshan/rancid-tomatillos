@@ -35,27 +35,27 @@ Along with introducing new technology this was a great experience working in a p
 
 ## Site Features
 
-<img src="./.github/readme_images/" alt="Gif of Desktop View showing all movie posters">
+<img src=".github/readme_images/RT Desktop Main.gif" alt="Gif of Desktop View showing all movie posters">
 
 * Desktop Home View
 
-<img src="./.github/readme_images/" alt="Gif of Desktop View showing detailed movie information">
+<img src=".github/readme_images/RT Desktop Movie.gif" alt="Gif of Desktop View showing detailed movie information">
 
 * Desktop Movie View
 
-<img src="./.github/readme_images/" alt="Gif of Mobile View showing all movie posters">
+<img src=".github/readme_images/RT Mobile Main.gif" alt="Gif of Mobile View showing all movie posters">
 
 * Mobile Home View
 
-<img src="./.github/readme_images/" alt="Gif of Mobile View showing detailed movie information">
+<img src=".github/readme_images/RT Mobile Movie.gif" alt="Gif of Mobile View showing detailed movie information">
 
 * Mobile Movie View
 
-<img src="./.github/readme_images/" alt="Image showing Lighthouse Ratings as follows; Performance: X, Accessibility: X, SEO: X ">
+<img src=".github/readme_images/RT Lighthouse.png" alt="Image showing Lighthouse Ratings as follows; Performance: 83, Accessibility: 100, Best Practices: 100, SEO: 100">
 
 * Lighthouse Ratings
 
-<img src="./.github/readme_images/" alt="Image showing colors contrast well for all spectrums of color blindness">
+<img src=".github/readme_images/RT Color Palette.png" alt="Image showing colors contrast well for all spectrums of color blindness">
 
 * Color Contrast Ratings
 
