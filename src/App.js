@@ -37,17 +37,25 @@ class App extends Component {
     }
   }
 
+  cleanData = (data) => {
+    return data.map(block => {
+      return {
+        id: block.id,
+        poster_path: block.poster_path,
+        title: block.title
+      }
+    })
+  }
+
   componentDidMount = () => {
     getMovie('')
       .then(result =>{
-          console.log(result)
-          this.setState({ movies: result.movies })
+          this.setState({ movies: this.cleanData(result.movies) })
           if (result.error) {
             this.setState({error: result.error})
           }
         })
       .catch(error =>{
-        console.log(error)
         this.setState({ error: error })
        })
   }
@@ -70,7 +78,6 @@ class App extends Component {
         </Switch>
         </main>
         <nav className="bottom-nav">
-          {/* <h2>hold</h2> */}
           <Route path="/:id">
             <Link to="/">
               <button className="returnButton" onClick={ this.deselect }>Go back!</button>

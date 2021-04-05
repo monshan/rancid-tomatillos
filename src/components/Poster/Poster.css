@@ -6,17 +6,6 @@
   background-repeat: no-repeat;
 }
 
-.poster:hover + .details {
- display: block;
-}
-
-.details {
-  position: absolute;
-  display: none;
-  width: 100%;
-  height: 100%;
-}
-
 .hvr-float-shadow {
   display: inline-block;
   vertical-align: middle;
@@ -60,11 +49,3 @@
   transform: translateY(5px);
   /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
-
-
-/* @media screen and (min-width: 600px) {
-  .poster {
-    width: 100%;
-
-  }
-} */
