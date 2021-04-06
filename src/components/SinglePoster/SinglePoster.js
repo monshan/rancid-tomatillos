@@ -16,18 +16,34 @@ class SinglePoster extends Component {
     return listItems.map(genre => <li key={`${id}${genre}`} className="genre">{genre}</li>);
   }
 
-  roundRating = (toRound) => {
-    return Math.round(toRound)
-  }
+  cleanSingle = (param) => {
+    const cleaned = {
+      title: param.title,
+      tagline: param.tagline,
+      release_date: param.release_date,
+      runtime: param.runtime,
+      poster_path: param.poster_path,
+      average_rating: Math.round(param.average_rating),genres: param.genres,
+      overview: param.overview,
+      id: param.id,
+      backdrop_path: param.backdrop_path
+    }
 
-  formatMoney = (raw) => {
-    return raw.toLocaleString();
+    if (param.budget) {
+      cleaned.budget = param.budget.toLocaleString()
+    }
+
+    if (param.revenue) {
+      cleaned.revenue = param.revenue.toLocaleString()
+    }
+
+    return cleaned;
   }
 
   componentDidMount = () => {
     getMovie(this.props.movieId)
       .then(result => {
-        this.setState({ movie: result.movie })
+        this.setState({ movie: this.cleanSingle(result.movie) })
         if (result.error) {
           this.setState({error: result.error})
         }
@@ -61,11 +77,11 @@ class SinglePoster extends Component {
           {tagline && <blockquote>{ tagline }</blockquote>}
           <p>Released: { release_date }</p>
           <p>Runtime: { runtime } min.</p>
-          <p>Rating: { this.roundRating(average_rating) }/10</p>
+          <p>Rating: { average_rating }/10</p>
           <ul className="Genres">Genres: { this.makeItems(genres, id) }</ul>
           <p>{ overview }</p>
-          {!!budget && <p>Budget: ${ this.formatMoney(budget) }</p>}
-          {!!revenue && <p>Revenue: ${ this.formatMoney(revenue) }</p>}
+          {!!budget && <p>Budget: ${ budget }</p>}
+          {!!revenue && <p>Revenue: ${ revenue }</p>}
         </article>
       </div>
     )

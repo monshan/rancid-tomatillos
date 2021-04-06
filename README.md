@@ -1,5 +1,4 @@
-# rancid-tomatillos
-
+# Rancid Tomatillos
 
 ## Contributors
 
@@ -9,23 +8,27 @@
 ## Abstract
 
 Rancid Tomatillos utilizes new-to-us technologies including React, React/Router, and Cypress to create a React app that displays movies, and movie information. Focus was placed on learning and implementing systems; some details include:
-* Create a multi-page emulating site using React components
+
+
+* Create a multi-page emulating site using React Router
 * Test user happy/sad paths as well as API errors
 Along with introducing new technology this was a great experience working in a pair asynchronously, balancing solo work with reliable meetings and excellent daily standups.
 
 ## Technologies Used:
 
 * React
-* React/router
-* Cypress
-* JavaScript
-* CSS
-* HTML
+* React Router
+* Cypress Testing Framework
+* JavaScript ES6
+* CSS3
+* HTML5
 * Normalize
 * Wave
 * Lighthouse
 * Git
-* Atom/vsCode
+* Text Editors of Choice:
+  * Atom
+  * VSCode
 
 ## Initial Setup:
 
@@ -61,3 +64,7 @@ Along with introducing new technology this was a great experience working in a p
 
 
 ### Future Additions
+
+1. Pass Cypress testing for 500s HTTP Request server type errors
+2. Further animations/transitions/potentially carousel
+3. Maybe actually make friends with my teammate... 🥲
