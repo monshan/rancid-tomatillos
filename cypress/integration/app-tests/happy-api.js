@@ -1,10 +1,9 @@
 describe('Stubbing Tests', () => {
-  // beforeEach(() => {
-  //   cy.visit('http://localhost:3000/');
-  // });
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/');
+  });
 
   it('Should be able to click on a unique poster and direct user to related page', () => {
-    cy.visit('http://localhost:3000/');
     cy.intercept({
       method: 'GET',
       url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919'
@@ -24,7 +23,6 @@ describe('Stubbing Tests', () => {
   })
 
   it('Should successfully GET all posters from API server', () => {
-    cy.visit('http://localhost:3000/');
     cy.intercept({
       method: 'GET',
       url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/'
